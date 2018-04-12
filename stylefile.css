@@ -1,0 +1,23 @@
+
+ #map {
+        height: 900px;
+        width: 100%;
+     
+       }
+
+.infoHeader{
+    
+    font-family: cursive;
+    font-size: 24px;
+    background-color: black;
+    color: white;
+
+}
+
+ /*       
+*{
+            margin:0px;
+            padding:0px;
+            font-family: sans-serif;
+ }
+        */

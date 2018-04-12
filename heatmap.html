@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TrioSpect-Crime</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search"  aria-label="Search">
+            <button class="btn btn-outline success my-2-sm-0" type="submit"> Search </button>
+          
+        </form>
+      </nav>
+    <div class="row">
+          <div class="col-md-4">
+            <div id="sidebar">
+                
+                <div class="toggle-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul>
+                    <li>Crime</li>
+                    <li> Shootings </li>
+                    <li> Homicides </li>
+                    <li> Victms </li>
+                </ul>
+            </div>
+            
+          </div>
+          <div class="col-md-8">
+             <div class="row">
+                 <div id="map"></div>
+              </div>
+              <div class="row">
+                    <div id="location-info"></div>
+              </div>
+              
+              
+          </div>
+        
+    </div> <!--------- row ending --------------------->
+    
+    <script>
+      function initMap() {
+        
+        //Map options
+        var options = {
+            zoom:8,
+            center:{lng:-77.64102054,lat:43.14556143}
+        }
+        
+        //New map
+        var map = new google.maps.Map(document.getElementById('map'),options);
+          
+          //Creating array dynamic for properties of markers
+          
+        var script = document.createElement('script');
+        script.src = 'https://maps.cityofrochester.gov/arcgis/rest/services/RPD/RPD_Part_I_Crime/FeatureServer/2/query?where=1%3D1&outFields=&outSR=4326&f=json';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+       
+    /*
+    
+        var markers = [
+              {coords:{lng:-77.5903342, lat:43.15354789},content:'<h1>Trying stuff</h1>'},
+              {coords:{lng:-77.64102054,lat:43.14556143}},
+              {coords:{lng:-77.65281226,lat:43.1325854}}
+          ];
+*/
+        
+/*   
+        
+window.eqfeed_callback = function(results){
+    for(var i = 0;i < results.features.length; i++){
+        var coords = results.features[i].geometry.coordinates;
+        console.log(coords);
+        var latLang = new google.maps.Latlng(coords[1],coords[0]);
+        var marker = new google.maps.Marker({
+            position: latLang,
+            map: map
+        });
+    
+    }
+}
+    */
+/*
+    //loop through markers 
+        for(var i = 0;i < markers.length; i++){
+            //Add marker
+            addMarker(markers[i]);     
+          }
+          
+        //Add marker dynamically
+        function addMarker(props){
+             
+          var marker = new google.maps.Marker({
+              position : props.coords,
+              map:map,
+               
+        }); 
+              
+            //Check for custom icon
+        if(props.iconImage){
+                //set icon image
+            marker.setIcon(props.iconImage);
+        }
+              
+            //check content
+         if(props.content){
+                var infoWindow = new google.maps.InfoWindow({
+              content:props.content
+          });
+          marker.addListener('click',function(){
+             infoWindow.open(map,marker);
+          });     
+        }
+
+       }
+      
+      } */ 
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsMktZADnhRRNNlKwnImGX36UPws03yoo&callback=initMap">
+    </script>
+          <script src="crimeLocation.js"></script>
+
+  </body>
+</html>
